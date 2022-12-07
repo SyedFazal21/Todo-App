@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <nav class="navbar bg-light">
+    <div class="container-fluid">
+      <p class="navbar-brand">Total Tasks: {{ 5 }}</p>
+      <p class="navbar-brand">In Progress: {{ 3 }}</p>
+      <p class="navbar-brand">Pending: {{ 2 }}</p>
+    </div>
+  </nav>
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Date</th>
+        <th scope="col">Task</th>
+        <th scope="col">Task Status</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of taskList">
+        <th scope="row">1</th>
+        <td>{{ task.date | date: "short" }}</td>
+        <td>
+          {{ task.task }}
+        </td>
+        <td>
+          <div>{{ getStatus(task.status) }}</div>
+        </td>
+        <td>
+          <button (click)="editTask(task._id)" class="btn btn-primary">
+            Edit
+          </button>
+        </td>
+        <td><button class="btn btn-primary">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

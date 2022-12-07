@@ -1,0 +1,57 @@
+
+<div [formGroup]="registerForm" class="container mt-5 align">
+  <div class="row">
+    <div class="col-8">
+      <label class="form-label">Email</label>
+      <input formControlName="email" class="form-control" type="text">
+      <div *ngIf="registerForm.controls['email'].errors?.email && isSubmitted" class="form-text">
+        Invalid Email
+      </div>
+      <div *ngIf="registerForm.controls['email'].errors?.required && isSubmitted" class="form-text">
+        Email is required
+      </div>
+    </div>
+    <div class="col-8 mt-4">
+      <label class="form-label">User Name</label>
+      <input formControlName="username" class="form-control" type="text">
+      <div *ngIf="registerForm.controls['username'].errors?.required && isSubmitted" class="form-text">
+        User Name is required
+      </div>
+      <div *ngIf="registerForm.controls['username'].errors?.minlength && isSubmitted" class="form-text">
+        User Name length is small
+      </div>
+      <div *ngIf="registerForm.controls['username'].errors?.maxlength && isSubmitted" class="form-text">
+        User Name length too big
+      </div>
+    </div>
+    <div class="col-8 mt-4">
+      <label class="form-label">Password</label>
+      <input formControlName="password" class="form-control" type="text">
+      <div *ngIf="registerForm.controls['password'].errors?.required && isSubmitted" class="form-text">
+        Password is required
+      </div>
+      <div *ngIf="registerForm.controls['password'].errors?.minlength && isSubmitted" class="form-text">
+        Password length is small
+      </div>
+      <div *ngIf="registerForm.controls['password'].errors?.maxlength && isSubmitted" class="form-text">
+        Password length too big
+      </div>
+    </div>
+    <div class="col-8 mt-4">
+      <label class="form-label">Confirm Password</label>
+      <input formControlName="confirmPassword" class="form-control" type="text">
+      <div *ngIf="registerForm.controls['confirmPassword'].errors?.required && isSubmitted" class="form-text">
+        Confirm Password is required
+      </div>
+      <div *ngIf="registerForm.controls['confirmPassword'].errors?.minlength && isSubmitted" class="form-text">
+        Confirm Password length is small
+      </div>
+      <div *ngIf="registerForm.controls['confirmPassword'].errors?.maxlength && isSubmitted" class="form-text">
+        Confirm Password length too big
+      </div>
+    </div>
+  </div>
+  <button (click)="submitForm()" class="btn btn-primary mt-4" >Submit</button>
+</div>
+
+<app-modal (inform)="closeModal($event)" *ngIf="modalShow"></app-modal>
